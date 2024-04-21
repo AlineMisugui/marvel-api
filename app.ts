@@ -6,7 +6,7 @@ import swaggerSpec from './swagger';
 
 class App {
     express : express.Application
-
+ 
     constructor() {
         this.express = express()
         this.express.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
