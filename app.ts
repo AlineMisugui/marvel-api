@@ -3,6 +3,8 @@ import mongoose from 'mongoose';
 import { routes } from './routes';
 import swaggerUi from 'swagger-ui-express';
 import swaggerSpec from './swagger';
+import dotenv from 'dotenv';
+dotenv.config()
 
 class App {
     express : express.Application
