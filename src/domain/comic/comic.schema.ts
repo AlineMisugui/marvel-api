@@ -2,8 +2,7 @@ import { Schema, model } from "mongoose";
 
 const ComicSchema = new Schema({
     marvelId:{
-        type: String,
-        required: true
+        type: String
     },
     title: {
         type: String,
