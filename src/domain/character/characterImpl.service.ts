@@ -1,6 +1,6 @@
 import { CharacterService } from "./character.service";
 import characterRepository from "./character.schema"
-import { NotFoundException } from "src/exceptions/notFoundException";
+import { NotFoundException } from "../../exceptions/notFoundException";
 import { CharacterRequestDTO } from "./character.dto";
 
 class CharaterServiceImpl implements CharacterService {
