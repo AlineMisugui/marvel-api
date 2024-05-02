@@ -1,4 +1,4 @@
-import BaseController from "src/senior/BaseController";
+import BaseController from "../../../src/senior/BaseController";
 import { CharacterService } from "./character.service";
 import characterServiceImpl from "./characterImpl.service";
 import { Request, Response } from "express";
