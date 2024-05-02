@@ -18,4 +18,4 @@ routes.delete("/comic/:id", comicController.deleteComic)
 
 export {
     routes
-}
+} 
