@@ -4,3 +4,10 @@ export interface CharacterDTO {
     description: string;
     image: string;
 }
+
+
+export interface CharacterRequestDTO {
+    name: string;
+    description: string;
+    image: string;
+}
