@@ -5,3 +5,10 @@ export interface ComicDTO {
     publicationDate: Date;
     coverImage: string;
 }
+
+export interface ComicRequestDTO {
+    title: string;
+    description: string;
+    publicationDate: Date;
+    coverImage: string;
+}
