@@ -1,7 +1,7 @@
 export interface PopulateService {
     constructQueryParams(): string;
     getEventOriginalSin(): Promise<any>;
-    getComics(): Promise<any>;
-    getCreators(): Promise<any>;
-    getCharacters(): Promise<any>;
+    getComics(): Promise<void>;
+    getCreators(): Promise<void>;
+    getCharacters(): Promise<void>;
 }

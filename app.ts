@@ -24,7 +24,7 @@ class App {
     private async database() {
         try {
             mongoose.set("strictQuery", true)
-            await mongoose.connect("mongodb://0.0.0.0:27017/to-do-list")
+            await mongoose.connect("mongodb://0.0.0.0:27017/marvel-api")
             console.log("Connected to database")
         } catch (error) {
             console.log("Cannot conect database: ", error)

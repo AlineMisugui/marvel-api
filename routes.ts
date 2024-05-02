@@ -3,10 +3,10 @@ import populateController from './src/domain/populate-database/populate.controll
 
 const routes = Router();
 
-routes.get("/events", populateController.getEvents)
-routes.get("/comics", populateController.getComics)
-routes.get("/creators", populateController.getCreators)
-routes.get("/characters", populateController.getCharacters)
+routes.get("populate/events", populateController.getEvents)
+routes.get("populate/comics", populateController.getComics)
+routes.get("populate/creators", populateController.getCreators)
+routes.get("populate/characters", populateController.getCharacters)
 
 export {
     routes

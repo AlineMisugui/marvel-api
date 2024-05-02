@@ -1,6 +1,10 @@
 import { Schema, model } from "mongoose";
 
 const CreatorSchema = new Schema({
+    marvelId:{
+        type: String,
+        required: true
+    },
     name: {
         type: String,
         required: true
@@ -10,8 +14,8 @@ const CreatorSchema = new Schema({
         required: true
     },
     comics: {
-        type: [Schema.Types.ObjectId],
-        ref: 'Comic'
+        type: [String],
+        required: true
     }
 }, {
     timestamps: true

@@ -1,13 +1,16 @@
 import { Schema, model } from "mongoose";
 
 const ComicSchema = new Schema({
+    marvelId:{
+        type: String,
+        required: true
+    },
     title: {
         type: String,
         required: true
     },
     description: {
-        type: String,
-        required: true
+        type: String
     },
     publicationDate: {
         type: Date,

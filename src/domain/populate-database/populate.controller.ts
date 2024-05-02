@@ -17,18 +17,18 @@ class PopulateController extends BaseController {
     })
 
     getComics = this.executeAction(async (req: Request, res: Response) => {
-        const comics = await this.populateService.getComics()
-        res.status(200).send(comics)
+        await this.populateService.getComics()
+        res.status(200).send({message: "Comics were saved on database."})
     })
 
     getCreators = this.executeAction(async (req: Request, res: Response) => {
-        const creators = await this.populateService.getCreators()
-        res.status(200).send(creators)
+        await this.populateService.getCreators()
+        res.status(200).send({message: "Creators were saved on database."})
     }) 
 
     getCharacters = this.executeAction(async (req: Request, res: Response) => {
-        const characters = await this.populateService.getCharacters()
-        res.status(200).send(characters)
+        await this.populateService.getCharacters()
+        res.status(200).send({message: "Characters were saved on database."})
     })
 
 }
