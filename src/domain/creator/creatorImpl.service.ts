@@ -1,7 +1,7 @@
 import { CreatorService } from "./creator.service";
 import creatorRepository from "./creator.schema";
 import { NotFoundException } from "../../exceptions/notFoundException";
-import { CreatorRequestDTO } from "./creator.dto";
+import { CreatorByComicCountResponseDTO, CreatorGroupByRoleResponseDTO, CreatorRequestDTO } from "./creator.dto";
 
 class CreatorServiceImpl implements CreatorService {
     async getCreators(page: number, limit: number): Promise<any> {
@@ -42,14 +42,16 @@ class CreatorServiceImpl implements CreatorService {
             { $limit: limit }
         ]);
 
-        return creators;
+        return creators as CreatorByComicCountResponseDTO[];
     }
 
     async getCreatorGoupByRole(){
         const creators = await creatorRepository.aggregate([
-            { $group: { _id: "$role", creators: { $push: "$$ROOT" } } }
+            { $group: { _id: "$role", creators: { $push: "$$ROOT" } } },
+            { $project: { role: "$_id", creators: 1, _id: 0 } },
+            { $sort: { role: 1 } }
         ]);
-        return creators;
+        return creators as CreatorGroupByRoleResponseDTO[];
     }
 } 
 

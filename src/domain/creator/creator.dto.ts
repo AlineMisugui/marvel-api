@@ -10,3 +10,15 @@ export interface CreatorRequestDTO {
     role: string;
     comics: string[];
 }
+
+export interface CreatorByComicCountResponseDTO {
+    _id: string;
+    name: string;
+    role: string;
+    comicsCount: number;
+}
+
+export interface CreatorGroupByRoleResponseDTO {
+    role: string;
+    creators: CreatorDTO[];
+}

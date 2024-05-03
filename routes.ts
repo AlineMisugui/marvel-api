@@ -14,7 +14,7 @@ routes.get("/populate/comics", populateController.getComics)
 routes.get("/populate/creators", populateController.getCreators)
 routes.get("/populate/characters", populateController.getCharacters)
 
-routes.get("/comic/by-publication", comicController.getComicsOrderedByPublicationDate)
+routes.get("/comic/by-publication-date", comicController.getComicsOrderedByPublicationDate)
 routes.get("/comic", comicController.getComics) 
 routes.get("/comic/:id", comicController.getComicById)
 routes.post("/comic", comicValidatorMiddleware, comicController.createComic)

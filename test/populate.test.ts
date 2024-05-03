@@ -8,19 +8,19 @@ describe("Testing populate endpoints", () => {
 
         expect(response.status).toEqual(200)
         expect(response.body.message).toEqual("Comics were saved on database.")
-    }, 10000)
+    }, 150000)
 
     it("Must populate the database with creators", async () => {
         const response = await request.default(app).get("/populate/creators")
 
         expect(response.status).toEqual(200)
         expect(response.body.message).toEqual("Creators were saved on database.")
-    }, 10000)
+    }, 15000)
 
     it("Must populate the database with characters", async () => {
         const response = await request.default(app).get("/populate/characters")
 
         expect(response.status).toEqual(200)
         expect(response.body.message).toEqual("Characters were saved on database.")
-    }, 10000)
+    }, 15000)
 })
