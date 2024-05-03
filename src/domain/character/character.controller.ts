@@ -37,6 +37,20 @@ class CharacterController extends BaseController {
         await this.characterService.deleteCharacter(req.params.id);
         res.status(204).send();
     });
+
+    getCharacterOrderedByNameLenght = this.executeAction(async (req: Request, res: Response) => {
+        const page = Number(req.query.page) || 1;
+        const limit = Number(req.query.limit) || 10;
+        const characters = await this.characterService.getCharacterOrderedByNameLenght(page, limit);
+        res.status(200).send(characters);
+    });
+
+    getCharacterOrganizeByImageType = this.executeAction(async (req: Request, res: Response) => {
+        const page = Number(req.query.page) || 1;
+        const limit = Number(req.query.limit) || 10;
+        const characters = await this.characterService.getCharacterOrganizeByImageType(page, limit);
+        res.status(200).send(characters);
+    });
 }
 
 const characterService = characterServiceImpl;
