@@ -38,6 +38,7 @@ class ComicServiceImpl implements ComicService {
         const comics = await comicRepository.find().sort({ publicationDate: 1 }).skip((page - 1) * limit).limit(limit);
         return comics;
     }
+    
 }
 
 export default new ComicServiceImpl();
