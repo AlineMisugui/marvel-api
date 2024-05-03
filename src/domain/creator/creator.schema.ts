@@ -2,8 +2,7 @@ import { Schema, model } from "mongoose";
 
 const CreatorSchema = new Schema({
     marvelId:{
-        type: String,
-        required: true
+        type: String
     },
     name: {
         type: String,

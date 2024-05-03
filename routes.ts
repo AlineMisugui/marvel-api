@@ -4,6 +4,8 @@ import comicController from './src/domain/comic/comic.controller';
 import { comicValidatorMiddleware } from './src/middlewares/comicValidatorMiddleware';
 import characterController from './src/domain/character/character.controller';
 import { characterValidatorMiddleware } from './src/middlewares/characterValidatorMiddleware';
+import creatorController from './src/domain/creator/creator.controller';
+import { creatorValidatorMiddleware } from './src/middlewares/creatorValidatorMiddleware';
 
 const routes = Router();
 
@@ -23,6 +25,12 @@ routes.get("/character/:id", characterController.getCharacterById)
 routes.post("/character", characterValidatorMiddleware, characterController.createCharacter)
 routes.put("/character/:id", characterValidatorMiddleware, characterController.updateCharacter)
 routes.delete("/character/:id", characterController.deleteCharacter)
+
+routes.get("/creator", creatorController.getCreators)
+routes.get("/creator/:id", creatorController.getCreatorById)
+routes.post("/creator", creatorValidatorMiddleware, creatorController.createCreator)
+routes.put("/creator/:id", creatorValidatorMiddleware, creatorController.updateCreator)
+routes.delete("/creator/:id", creatorController.deleteCreator)
 
 export {
     routes
