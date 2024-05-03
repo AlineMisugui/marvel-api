@@ -37,6 +37,14 @@ class ComicController extends BaseController {
         await this.comicService.deleteComic(req.params.id);
         res.status(204).send();
     });
+
+    getComicsOrderedByPublicationDate = this.executeAction(async (req: Request, res: Response) => {
+        const page = Number(req.query.page) || 1;
+        const limit = Number(req.query.limit) || 10;
+        const comics = await this.comicService.getComicsOrderedByPublicationDate(page, limit);
+        res.status(200).send(comics);
+    });
+
 }
 
 const comicService = ComicServiceImpl

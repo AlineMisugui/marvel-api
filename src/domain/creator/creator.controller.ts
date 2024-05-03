@@ -36,6 +36,19 @@ class CreatorController extends BaseController {
         await this.creatorService.deleteCreator(req.params.id);
         res.status(204).send();
     });
+
+    getCreatorsByComicsCount = this.executeAction(async (req, res) => {
+        const page = Number(req.query.page) || 1;
+        const limit = Number(req.query.limit) || 10;
+        const creators = await this.creatorService.getCreatorsByComicsCount(page, limit);
+        res.status(200).send(creators);
+    });
+
+    getCreatorGoupByRole = this.executeAction(async (req, res) => {
+        const creators = await this.creatorService.getCreatorGoupByRole();
+        res.status(200).send(creators);
+    });
+
 }
 
 const creatorService = creatorImplService

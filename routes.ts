@@ -14,6 +14,7 @@ routes.get("/populate/comics", populateController.getComics)
 routes.get("/populate/creators", populateController.getCreators)
 routes.get("/populate/characters", populateController.getCharacters)
 
+routes.get("/comic/by-publication", comicController.getComicsOrderedByPublicationDate)
 routes.get("/comic", comicController.getComics) 
 routes.get("/comic/:id", comicController.getComicById)
 routes.post("/comic", comicValidatorMiddleware, comicController.createComic)
@@ -26,6 +27,8 @@ routes.post("/character", characterValidatorMiddleware, characterController.crea
 routes.put("/character/:id", characterValidatorMiddleware, characterController.updateCharacter)
 routes.delete("/character/:id", characterController.deleteCharacter)
 
+routes.get("/creator/by-comics-count", creatorController.getCreatorsByComicsCount)
+routes.get("/creator/by-roles", creatorController.getCreatorGoupByRole)
 routes.get("/creator", creatorController.getCreators)
 routes.get("/creator/:id", creatorController.getCreatorById)
 routes.post("/creator", creatorValidatorMiddleware, creatorController.createCreator)

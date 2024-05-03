@@ -33,6 +33,11 @@ class ComicServiceImpl implements ComicService {
         const comic = await this.getComicById(id);
         await comicRepository.deleteOne(comic);
     }
+
+    async getComicsOrderedByPublicationDate(page: number, limit: number){
+        const comics = await comicRepository.find().sort({ publicationDate: 1 }).skip((page - 1) * limit).limit(limit);
+        return comics;
+    }
 }
 
 export default new ComicServiceImpl();
