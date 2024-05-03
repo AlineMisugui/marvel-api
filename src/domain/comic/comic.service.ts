@@ -6,4 +6,5 @@ export interface ComicService {
     createComic(comic: ComicRequestDTO): Promise<any>;
     updateComic(id: string, comic: ComicRequestDTO): Promise<any>;
     deleteComic(id: string): Promise<void>;
+    getComicsOrderedByPublicationDate(page: number, limit: number): Promise<any>;
 }

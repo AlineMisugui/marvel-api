@@ -33,6 +33,24 @@ class CreatorServiceImpl implements CreatorService {
         const creator = await this.getCreatorById(id);
         await creatorRepository.deleteOne(creator);
     }
+
+    async getCreatorsByComicsCount(page: number, limit: number){
+        const creators = await creatorRepository.aggregate([
+            { $project: { _id: 1, name: 1, role: 1, comicsCount: { $size: "$comics" } } },
+            { $sort: { comicsCount: 1 } },
+            { $skip: (page - 1) * limit },
+            { $limit: limit }
+        ]);
+
+        return creators;
+    }
+
+    async getCreatorGoupByRole(){
+        const creators = await creatorRepository.aggregate([
+            { $group: { _id: "$role", creators: { $push: "$$ROOT" } } }
+        ]);
+        return creators;
+    }
 } 
 
 export default new CreatorServiceImpl();

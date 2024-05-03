@@ -6,4 +6,6 @@ export interface CreatorService {
     createCreator(creator: CreatorRequestDTO): Promise<any>;
     updateCreator(id: string, creator: CreatorRequestDTO): Promise<any>;
     deleteCreator(id: string): Promise<void>;
+    getCreatorsByComicsCount(page: number, limit: number): Promise<any>;
+    getCreatorGoupByRole(): Promise<any>;
 }
