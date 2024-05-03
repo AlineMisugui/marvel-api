@@ -6,4 +6,6 @@ export interface CharacterService {
     createCharacter(character: CharacterRequestDTO): Promise<any>;
     updateCharacter(id: string, character: CharacterRequestDTO): Promise<any>;
     deleteCharacter(id: string): Promise<void>;
+    getCharacterOrderedByNameLenght(page: number, limit: number): Promise<any>;
+    getCharacterOrganizeByImageType(page: number, limit: number): Promise<any>;
 }

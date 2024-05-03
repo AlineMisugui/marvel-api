@@ -21,6 +21,8 @@ routes.post("/comic", comicValidatorMiddleware, comicController.createComic)
 routes.put("/comic/:id", comicValidatorMiddleware, comicController.updateComic)
 routes.delete("/comic/:id", comicController.deleteComic)
 
+routes.get("/character/by-name-lenght", characterController.getCharacterOrderedByNameLenght)
+routes.get("/character/ordered-by-image-type", characterController.getCharacterOrganizeByImageType)
 routes.get("/character", characterController.getCharacter)
 routes.get("/character/:id", characterController.getCharacterById)
 routes.post("/character", characterValidatorMiddleware, characterController.createCharacter)

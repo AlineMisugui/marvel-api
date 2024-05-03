@@ -35,6 +35,37 @@ class CharaterServiceImpl implements CharacterService {
         await characterRepository.deleteOne(character);
     }
 
+    async getCharacterOrderedByNameLenght(page: number, limit: number): Promise<any>{
+        const characters = await characterRepository.aggregate([
+            { 
+                $addFields: { 
+                    nameLength: { $strLenCP: "$name" } 
+                } 
+            },
+            { $sort: { nameLength: 1 } },
+            { $skip: (page - 1) * limit },
+            { $limit: limit }
+        ]);
+        return characters;
+    }
+
+    async getCharacterOrganizeByImageType(page: number, limit: number): Promise<any> {
+        const characters = await characterRepository.aggregate([
+            {$addFields: {
+                    imageExtension: { $split: ["$image", "."] }}},
+            {$addFields: {
+                    imageExtension: { $arrayElemAt: ["$imageExtension", -1] }}},
+            {$group: {
+                    _id: "$imageExtension", 
+                    characters: { $push: "$$ROOT" }}},
+            {$skip: (page - 1) * limit},
+            {$limit: limit}
+        ]);
+        return characters;
+    }
+
+    
+
 }
 
 export default new CharaterServiceImpl();
