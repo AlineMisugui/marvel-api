@@ -1,6 +1,8 @@
 **DOCUMENTATION ACCESS:**  
 https://documenter.getpostman.com/view/30334910/2sA3JGe3aX
 
+Click on "Run in Postman" > import collection > run the requests!
+
 **RESULTS OF TESTS**
 
 TOOLS: Jest, Supertest and Autocannon
