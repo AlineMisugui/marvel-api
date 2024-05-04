@@ -2,16 +2,21 @@ import express from 'express';
 import mongoose from 'mongoose';
 import { routes } from './routes';
 import swaggerUi from 'swagger-ui-express';
-import swaggerSpec from './swagger';
 import dotenv from 'dotenv';
+import fs from 'fs';
+import path from 'path';
+
 dotenv.config()
 
 class App {
     express : express.Application
  
     constructor() {
+
+        const swaggerDocument = JSON.parse(fs.readFileSync(path.join(__dirname, 'swagger-output.json'), 'utf8'));
+
         this.express = express()
-        this.express.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+        this.express.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
         this.middleware()
         this.database()
         this.routes()
