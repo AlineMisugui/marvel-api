@@ -6,7 +6,8 @@
   "scripts": {
     "start": "nodemon ./main.ts",
     "test": "jest",
-    "autocannon": "autocannon -c 110 -d 10 -p 1" 
+    "autocannon": "autocannon -c 110 -d 10 -p 1",
+    "swagger": "node ./swagger.js"
   },
   "author": "",
   "license": "ISC",
@@ -36,6 +37,7 @@
     "@types/swagger-ui-express": "^4.1.6",
     "jest": "^29.7.0",
     "supertest": "^6.3.4",
+    "swagger-autogen": "^2.23.7",
     "ts-jest": "^29.1.2"
   }
 }
