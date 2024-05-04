@@ -1,6 +1,9 @@
 import express from 'express';
 import mongoose from 'mongoose';
-import { routes } from './routes';
+import comicRouter from './src/routes/comicRoutes';
+import characterRouter from './src/routes/characterRoutes';
+import creatorRouter from './src/routes/creatorRoutes';
+import populateRouter from './src/routes/populateRoutes';
 import swaggerUi from 'swagger-ui-express';
 import dotenv from 'dotenv';
 import fs from 'fs';
@@ -37,7 +40,10 @@ class App {
     }
 
     private routes(): void {
-        this.express.use(routes)
+        this.express.use(comicRouter)
+        this.express.use(characterRouter)
+        this.express.use(creatorRouter)
+        this.express.use(populateRouter)
     }
 }
 

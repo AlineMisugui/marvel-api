@@ -10,7 +10,7 @@ const doc = {
 };
 
 const outputFile = './swagger-output.json';
-const routes = ['./routes.ts'];
+const routes = ['./src/routes/populateRoutes.ts', './src/routes/comicRoutes.ts', './src/routes/characterRoutes.ts', './src/routes/creatorRoutes.ts'];
 
 
 
