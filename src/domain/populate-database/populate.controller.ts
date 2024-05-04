@@ -11,11 +11,6 @@ class PopulateController extends BaseController {
         this.populateService = populateService
     }
 
-    getEvents = this.executeAction(async (req: Request, res: Response) => {
-        const events = await this.populateService.getEventOriginalSin()
-        res.status(200).send(events)
-    })
-
     getComics = this.executeAction(async (req: Request, res: Response) => {
         await this.populateService.getComics()
         res.status(200).send({message: "Comics were saved on database."})

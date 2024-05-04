@@ -2,19 +2,18 @@
 module.exports = {
     preset: 'ts-jest',
     testEnvironment: 'node',
-    globals: {
-        'ts-jest': {
-            isolateModules: true
-        }
+    transform: {
+        '^.+\\.tsx?$': ['ts-jest', { /* ts-jest config goes here in Jest */ }],
     },
     clearMocks: true,
     coverageProvider: 'v8',
-    coverageTrashold: {
+    coverageThreshold: {
         global: {
             function: 80,
             lines: 80,
             statements: 80
         }
     },
+    collectCoverage: true,
     testPathIgnorePatterns: ['./dist/*']
 }

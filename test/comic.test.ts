@@ -7,7 +7,7 @@ const comicMock: ComicRequestDTO = {
     title: "Comic test",
     description: "Comic test description",
     publicationDate: new Date("2024-05-02T04:00:00.000+00:00"),
-    coverImage: "https://th.bing.com/th/id/OIP.Agn7z2F3Z3FjL6VisKvRQAHaE7?rs=1&pid=ImgDetMain"
+    coverImage: "https://th.bing.com/th/id/OIP.Agn7z2F3Z3FjL6VisKvRQAHaE7?rs=1&pid=ImgDetMain.png"
 }
 let comicId: string;
 
