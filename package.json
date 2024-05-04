@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon ./main.ts",
-    "test": "jest"
+    "test": "jest",
+    "autocannon": "autocannon -c 110 -d 10 -p 1" 
   },
   "author": "",
   "license": "ISC",
