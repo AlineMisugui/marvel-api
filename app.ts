@@ -4,10 +4,7 @@ import comicRouter from './src/routes/comicRoutes';
 import characterRouter from './src/routes/characterRoutes';
 import creatorRouter from './src/routes/creatorRoutes';
 import populateRouter from './src/routes/populateRoutes';
-import swaggerUi from 'swagger-ui-express';
 import dotenv from 'dotenv';
-import fs from 'fs';
-import path from 'path';
 
 dotenv.config()
 
@@ -15,11 +12,7 @@ class App {
     express : express.Application
  
     constructor() {
-
-        const swaggerDocument = JSON.parse(fs.readFileSync(path.join(__dirname, 'swagger-output.json'), 'utf8'));
-
         this.express = express()
-        this.express.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
         this.middleware()
         this.database()
         this.routes()
