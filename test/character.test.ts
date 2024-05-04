@@ -6,7 +6,7 @@ import { CharacterRequestDTO } from "../src/domain/character/character.dto";
 const characterMock: CharacterRequestDTO = {
     name: "Character test",
     description: "Character test description",
-    image: "https://th.bing.com/th/id/OIP.Agn7z2F3Z3FjL6VisKvRQAHaE7?rs=1&pid=ImgDetMain"
+    image: "https://th.bing.com/th/id/OIP.Agn7z2F3Z3FjL6VisKvRQAHaE7?rs=1&pid=ImgDetMain.jpg"
 }
 let characterId: string;
 
@@ -40,7 +40,7 @@ describe("Testing character endpoints", () => {
     it("Must return all characters ordered by image type", async () => {
         const response = await request.default(app).get("/character/ordered-by-image-type")
     
-        const allowedImageTypes = ["jpg", "jpeg", "png", "gif", "svg", "webp"];
+        const allowedImageTypes = ["jpg", "jpeg", "png", "gif", "svg", "webp", "unknown extension"];
         const imageType = response.body[0]._id.split('.').pop();
     
         expect(response.status).toEqual(200)

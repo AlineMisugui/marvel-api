@@ -50,11 +50,16 @@ class CharaterServiceImpl implements CharacterService {
     }
 
     async getCharacterOrganizeByImageType(page: number, limit: number): Promise<any> {
+        const extensions = ["jpg", "jpeg", "png", "gif", "svg", "webp"];
+        // se não tiver uma das extensões acima, o valor será unknown
+
         const characters = await characterRepository.aggregate([
             {$addFields: {
                     imageExtension: { $split: ["$image", "."] }}},
             {$addFields: {
                     imageExtension: { $arrayElemAt: ["$imageExtension", -1] }}},
+            {$addFields: {
+                    imageExtension: { $cond: { if: { $in: ["$imageExtension", extensions] } , then: "$imageExtension", else: "unknown extension" } }}},
             {$group: {
                     _id: "$imageExtension", 
                     characters: { $push: "$$ROOT" }}},
@@ -63,8 +68,6 @@ class CharaterServiceImpl implements CharacterService {
         ]);
         return characters;
     }
-
-    
 
 }
 
