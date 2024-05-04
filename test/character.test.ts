@@ -28,6 +28,27 @@ describe("Testing character endpoints", () => {
         expect(response.body.length).toBeLessThanOrEqual(10)
     })
 
+    it("Must return all characters ordered by name length", async () => {
+        const response = await request.default(app).get("/character/by-name-lenght")
+
+        expect(response.status).toEqual(200)
+        expect(response.body.length).toBeGreaterThan(0)
+        expect(response.body.length).toBeLessThanOrEqual(10)
+        expect(response.body[0].name.length).toBeLessThanOrEqual(response.body[response.body.length - 1].name.length)
+    })
+
+    it("Must return all characters ordered by image type", async () => {
+        const response = await request.default(app).get("/character/ordered-by-image-type")
+    
+        const allowedImageTypes = ["jpg", "jpeg", "png", "gif", "svg", "webp"];
+        const imageType = response.body[0]._id.split('.').pop();
+    
+        expect(response.status).toEqual(200)
+        expect(response.body.length).toBeGreaterThan(0)
+        expect(response.body.length).toBeLessThanOrEqual(10)
+        expect(allowedImageTypes).toContain(imageType)
+    })
+
     it("Must return a character by id", async () => {
         const response = await request.default(app).get(`/character/${characterId}`)
 

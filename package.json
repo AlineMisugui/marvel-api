@@ -6,6 +6,7 @@
   "scripts": {
     "start": "nodemon ./main.ts",
     "test": "jest",
+    "autocannon": "autocannon -c 110 -d 10 -p 1",
     "swagger": "node ./swagger.js"
   },
   "author": "",

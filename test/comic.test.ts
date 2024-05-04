@@ -30,6 +30,15 @@ describe("Testing comic endpoints", () => {
         expect(response.body.length).toBeLessThanOrEqual(10)
     })
 
+    it("Must return all comics ordered by publication date", async () => {
+        const response = await request.default(app).get("/comic/by-publication-date")
+    
+        expect(response.status).toEqual(200)
+        expect(response.body.length).toBeGreaterThan(0)
+        expect(response.body.length).toBeLessThanOrEqual(10)
+        expect(new Date(response.body[0].publicationDate).getTime()).toBeLessThanOrEqual(new Date(response.body[response.body.length - 1].publicationDate).getTime())
+    })
+
     it("Must return a comic by id", async () => {
         const response = await request.default(app).get(`/comic/${comicId}`)
 

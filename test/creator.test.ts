@@ -28,6 +28,24 @@ describe("Testing creator endpoints", () => {
         expect(response.body.length).toBeLessThanOrEqual(10)
     })
 
+    it("Must return all creators ordered by comics count", async () => {
+        const response = await request.default(app).get("/creator/by-comics-count")
+
+        expect(response.status).toEqual(200)
+        expect(response.body.length).toBeGreaterThan(0)
+        expect(response.body.length).toBeLessThanOrEqual(10)
+        expect(response.body[0].comicsCount).toBeLessThanOrEqual(response.body[response.body.length - 1].comicsCount)
+    })
+
+    it("Must return all creators grouped by role", async () => {
+        const response = await request.default(app).get("/creator/by-roles")
+
+        expect(response.status).toEqual(200)
+        expect(response.body.length).toBeGreaterThan(0)
+        expect(response.body.length).toBeLessThanOrEqual(10)
+        expect(response.body[0].role).toEqual(response.body[0].creators[0].role)
+    })
+
     it("Must return a creator by id", async () => {
         const response = await request.default(app).get(`/creator/${creatorId}`)
 
